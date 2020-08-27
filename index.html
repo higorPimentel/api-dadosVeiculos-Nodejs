@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/frmt.css">
+
+	<title>Consulta API Veículos</title>
+</head>
+<body>
+	
+
+<header id='header-api'>
+	<h1 id='lb_h1'>Consulta API Veículos</h1>
+		<nav id='menu-opcoes'>
+			<ul id='lista-opcoes'>
+				<li>Cadastro Veículos</li>
+				<li>Relatório</li>
+				<li>Ajuda</li>
+
+			</ul>	
+		</nav>	
+
+</header>
+
+
+
+<div class="container">
+
+		
+		
+		<form id="frm_registro" action="http://localhost:3000/cadastro" method="POST">
+						
+				<div class="bloco-opcoes">
+					<h1 id='cabecalho-opcoes'>Opções de Registro</h1>
+				</div>
+
+
+				<div id='bloco-opcoes-2' class="bloco-opcoes">
+					<div id='opcao-novo' class='grupo-opcoes'>
+						<label for="">Novo</label>
+						<div class='grupo-check'>aa</div>
+					</div>
+
+					<div id='opcao-alterar' class='grupo-opcoes'>
+						<label for="">Alterar</label>
+						<div class='grupo-check'>aa</div>
+					</div>
+
+					<div id='opcao-excluir' class='grupo-opcoes'>
+						<label for="">Exluir</label>
+						<div class='grupo-check'>aa</div>
+					</div>
+				</div>
+	
+
+				<div class="row">	
+					<div class="grupo_cxs col-1" id="grupo_cx_id">
+						<label for="">Id Registro</label>
+						<input type="text" name="cx_id" class="cx_text">
+					</div>	
+				</div>	
+
+				<div class="row">	
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Marca</label>
+						<input type="text" name="cx_marca" class="cx_text">
+					</div>	
+
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Modelo</label>
+						<input type="text" name="cx_modelo" class="cx_text">
+					</div>	
+
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Ano</label>
+						<input type="text" name="cx_ano" class="cx_text">
+					</div>	
+				</div>	
+
+				<div class="row">	
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Combustivel</label>
+						<input type="text" name="cx_combustivel" class="cx_text">
+					</div>	
+
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Cor</label>
+						<input type="text" name="cx_cor" class="cx_text">
+					</div>	
+
+					<div class="grupo_cxs col-3" id="grupo_cx_id">
+						<label for="">Preço</label>
+						<input type="text" name="cx_preco" class="cx_text">
+					</div>	
+				</div>	
+
+				<div class="row">	
+					<div class="grupo_cxs col-3" id="grupo_cx_id">							
+						<button  type="submit" onclick="enviar()" id='btn_cadastrar'>Cadastrar Veículo</button>
+						<input type="button" value='pesquisar' id='btn_pesquisa'>
+					</div>
+				</div>	
+
+		</form>	
+
+</div>
+
+
+
+		
+		<script>
+							
+				btn = document.querySelector('#btn_pesquisa')				    
+				btn.addEventListener("click", acessa_api)
+			
+
+
+				async function acessa_api (){
+
+					let resp = await fetch('http://localhost:3000/read');
+						let json = await resp.json();
+						//console.log(json.veiculos[0].modelo)
+						console.log(json)	
+				}			
+
+
+		</script>
+
+</body>
+</html>
