@@ -9,6 +9,7 @@
 
 	<title>Consulta API Veículos</title>
 </head>
+
 <body>
 	
 
@@ -34,73 +35,95 @@
 		<form id="frm_registro" action="http://localhost:3000/cadastro" method="POST">
 						
 				<div class="bloco-opcoes">
-					<h1 id='cabecalho-opcoes'>Opções de Registro</h1>
+					<h1 class='cabecalho-opcoes'>Opções de Registro</h1>
 				</div>
 
 
 				<div id='bloco-opcoes-2' class="bloco-opcoes">
-					<div id='opcao-novo' class='grupo-opcoes'>
-						<label for="">Novo</label>
-						<div class='grupo-check'>aa</div>
+					<div  class='grupo-opcoes'>
+						<label class='grupo-titulo-check' for="">Novo</label>
+						<div id='opcao-novo' class='grupo-check'>&#10004</div>
 					</div>
 
-					<div id='opcao-alterar' class='grupo-opcoes'>
-						<label for="">Alterar</label>
-						<div class='grupo-check'>aa</div>
+					<div  class='grupo-opcoes'>
+						<label class='grupo-titulo-check' for="">Alterar</label>
+						<div id='opcao-alterar' class='grupo-check'>&#10004</div>
 					</div>
 
-					<div id='opcao-excluir' class='grupo-opcoes'>
-						<label for="">Exluir</label>
-						<div class='grupo-check'>aa</div>
+					<div class='grupo-opcoes'>
+						<label class='grupo-titulo-check' for="">Exluir</label>
+						<div id='opcao-excluir' class='grupo-check'>&#10004</div>
 					</div>
 				</div>
-	
+			
+				<div id='bl-div'></div>
+
+
+
+				<div class="bloco-opcoes">
+					<h1 id='cabecalho-dados' class='cabecalho-opcoes'>Dados de Cadastro</h1>
+				</div>
+
 
 				<div class="row">	
 					<div class="grupo_cxs col-1" id="grupo_cx_id">
 						<label for="">Id Registro</label>
-						<input type="text" name="cx_id" class="cx_text">
-					</div>	
+						<input type="text" name="cx_id" id="cx_id" class="cx_text" disabled>
+					</div>					
+						<label for="" id='avisos'>Para Acessar o item, digite o código e pressiona Enter</label>
 				</div>	
 
 				<div class="row">	
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Marca</label>
-						<input type="text" name="cx_marca" class="cx_text">
+						<select name="cx_marca" id="cx_marca" class="cx_text">
+							<option value="CHEVROLET">CHEVROLET</option>
+							<option value="VOLKSWAGEN">VOLKSWAGEN</option>
+							<option value="FIAT">FIAT</option>
+							<option value="HONDA">HONDA</option>
+							<option value="FORD">FORD</option>
+						</select>
+						<!--<input type="text" name="cx_marca" class="cx_text">-->
 					</div>	
 
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Modelo</label>
-						<input type="text" name="cx_modelo" class="cx_text">
+						<input type="text" name="cx_modelo" id="cx_modelo" class="cx_text">
 					</div>	
 
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Ano</label>
-						<input type="text" name="cx_ano" class="cx_text">
+						<input type="text" name="cx_ano" id="cx_ano" class="cx_text">
 					</div>	
 				</div>	
 
 				<div class="row">	
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Combustivel</label>
-						<input type="text" name="cx_combustivel" class="cx_text">
+							<select name="cx_combustivel" id="cx_combustivel" class="cx_text">
+								<option value="GASOLINA">GASOLINA</option>
+								<option value="ALCOOL">ALCOOL</option>
+								<option value="FLEX">FLEX</option>
+								<option value="GNV">GNV</option>
+							</select>
 					</div>	
 
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Cor</label>
-						<input type="text" name="cx_cor" class="cx_text">
+						<input type="text" name="cx_cor" id="cx_cor" class="cx_text">
 					</div>	
 
 					<div class="grupo_cxs col-3" id="grupo_cx_id">
 						<label for="">Preço</label>
-						<input type="text" name="cx_preco" class="cx_text">
+						<input type="text" name="cx_preco" id="cx_preco" class="cx_text">
 					</div>	
 				</div>	
 
-				<div class="row">	
+				<div class="row" id='bt-ids'>	
 					<div class="grupo_cxs col-3" id="grupo_cx_id">							
-						<button  type="submit" onclick="enviar()" id='btn_cadastrar'>Cadastrar Veículo</button>
-						<input type="button" value='pesquisar' id='btn_pesquisa'>
+						<input type="button" onclick="enviar_form()" value='Confirmar' id='btn_cadastrar' class='btns' >
+						<input type="button" value='Cancelar' id='btn_cancela' class='btns'>
+						
 					</div>
 				</div>	
 
@@ -110,21 +133,32 @@
 
 
 
-		
+		<script src='js/opcoes.js'></script>
 		<script>
-							
-				btn = document.querySelector('#btn_pesquisa')				    
-				btn.addEventListener("click", acessa_api)
-			
+
+			let btn = document.querySelector('#bt-ids')
+			btn.addEventListener('mouseover', modifiic_btn)
+			btn.addEventListener('mouseout', ret_btn)
 
 
-				async function acessa_api (){
+			function ret_btn(event){
+				document.querySelector('#btn_cadastrar').style.backgroundColor = '#363636'
+					document.querySelector('#btn_cadastrar').style.color = 'white'
+					document.querySelector('#btn_cancela').style.backgroundColor = '#363636'
+					document.querySelector('#btn_cancela').style.color = 'white'
+			}
 
-					let resp = await fetch('http://localhost:3000/read');
-						let json = await resp.json();
-						//console.log(json.veiculos[0].modelo)
-						console.log(json)	
-				}			
+				
+				function modifiic_btn(event){
+					
+					
+					if (event.srcElement.id.substring(0,3) ==='btn'){
+						document.querySelector('#' + event.srcElement.id).style.backgroundColor = '#00FFFF'
+						document.querySelector('#' + event.srcElement.id).style.color = 'black'
+					}
+
+				}
+
 
 
 		</script>
