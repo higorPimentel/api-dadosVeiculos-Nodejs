@@ -32,15 +32,24 @@ body{
 	height: 50px; 
 }
 
+#header-api a {
+	text-decoration: none;
+	color:#40E0D0;
+	
+}
+
+
+
 #lb_h1{
 	position: fixed;
 	margin-left: 30px;
 	margin-top: 15px;
 	font-weight: bold;
 	font-size: 25px;
+	cursor:pointer;
 }
 
-#menu-opcoes{
+#menu_opcoes{
 	float: right;
 	margin-right: 40px;
 	margin-top: 20px;
@@ -49,9 +58,10 @@ body{
 }
 
 #lista-opcoes li{
-	border-left: 1px solid white;
+	cursor:pointer;
 	display: inline;
 	padding:5px 25px 5px 25px; 
+	color:#40E0D0;
 	
 }
 
@@ -68,8 +78,6 @@ body{
 	font-size: 25px;
 	margin-left: 30px;
 	display: block;
-	border-right: solid 1px #D3D3D3;
-	border-bottom: solid 1px #D3D3D3;
 	display: inline-block;
 	padding: 10px
 }
@@ -159,6 +167,7 @@ border:solid 1.5px #363636;
 	padding: 30px;
 	z-index: 0;
 	box-shadow: 0px 0px 10px 5px #4F4F4F;
+	background-color: white;
 }
 
 #cont-relatorio{
@@ -173,6 +182,7 @@ border:solid 1.5px #363636;
 	padding: 30px;
 	z-index: 0;
 	box-shadow: 0px 0px 10px 5px #4F4F4F;
+	background-color: white;
 }
 
 .cx_text{	
@@ -238,25 +248,89 @@ width:100%;
 #conteudo_relatorio{
 	margin-top: 30px;
 	width:100%;
+	
 
+}
+
+
+#relatorio {
+background-color:rgba(18,18,18,1);
+border-radius: 30px;
 }
 
 
 #relatorio th {
-	padding: 5px 25px 5px 25px;	
+	padding: 15px 25px 15px 25px;	
 	border: 1px solid grey;
-	background-color: rgba(0,0,0,0.8);
-	
+	background-color:rgba(18,18,18,0);
+	border-radius: 30px;
+	color:grey;
+	font-weight: bold;
+	border:none;
 }
+
 
 #relatorio td {
 	padding: 5px 25px 5px 25px;
-	border: 1px solid grey;
-	background-color: rgba(0,0,0,0.2);
+	border: 1px solid black;
+	color:#9C9C9C;
+	background-color:rgba(48,48,48,1);
 		
 }
 
 
+#msg_ajuda{
+	position:fixed;
+	top:0;
+	display: block;
+	background-color: rgba(0,0,0,0.2);
+	width:100%;
+	height: 100%;
+	display: none;
+}
+
+#container_info_ajuda{
+	display: inline-block;
+	margin-top: 180px;
+	margin-left: 30%;
+	background-color: white;
+	border:solid 3px black;
+	border-radius: 10px;
+
+}
+
+#info_ajuda p {
+margin-top: 5px;
+}
+
+
+.tit_0{
+	color:#4F4F4F;
+	display: inline-block;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.tit_1{
+	display: inline-block;
+	font-weight: bold
+}
+
+#info_ajuda{
+	padding: 20px;
+	
+}
+
+#btn_fechar{
+	display: inline;
+	margin-left:90%;
+	font-weight: bold;
+	background-color: black;
+	padding: 0px 15px 0px 15px;
+	color:white;
+	font-size: 13px;
+	cursor:pointer;
+}
 
 @media(max-width: 950px){
 

@@ -14,12 +14,12 @@
 	
 
 <header id='header-api'>
-	<h1 id='lb_h1'>Consulta API Veículos</h1>
-		<nav id='menu-opcoes'>
+	<a href="index.html"><h1 id='lb_h1'>Consulta API Veículos</h1></a>
+		<nav id='menu_opcoes'>
 			<ul id='lista-opcoes'>
-				<li>Cadastro Veículos</li>
-				<li>Relatório</li>
-				<li>Ajuda</li>
+				<a href="index.html"><li id='opc_cadastro'>Cadastro Veículos</li></a>
+				<a href="relatorio.html"><li id='opc_relatorio'>Relatório</li></a>
+				<li onclick ='ativa_ajuda()' id='opc_ajuda'>Ajuda</li>
 
 			</ul>	
 		</nav>	
@@ -129,6 +129,29 @@
 
 		</form>	
 
+
+		<div id='msg_ajuda'>
+				
+				<div id='container_info_ajuda'>
+					<div onclick='fechar_ajuda()' id='btn_fechar'>X</div>
+						<div id='info_ajuda'>
+							
+							<p><div class='tit_0'>Pagina Inicial - Cadastro Veículos: </div></p>
+							<p><div class='tit_1'>Novo:</div> Cadastra um novo Registro.</p>
+							<p><div class='tit_1'>Alterar:</div> Realiza uma alteração em um registro existente.</p>
+							<p>Para acessar o registro a ser alterado, informe seu código</p>
+							<p>e utilize a tecla Enter.</p>
+							<p><div class='tit_1'>Excluir:</div> Deleta um registro existente.</p>
+							<p>Após executar uma opção, a pagina é redirecionada ao servidor. </p>
+							<p>Clique em voltar e atualize a pagina para realizar mais operações.</p>
+
+							<p><div class='tit_0'>Relatorio: </div></p>
+							<p><div class='tit_1'>Novo:</div> Exibe uma listagem completa dos registros.</p>
+
+						</div>
+					</div>	
+			</div>
+
 </div>
 
 
@@ -157,6 +180,15 @@
 						document.querySelector('#' + event.srcElement.id).style.color = 'black'
 					}
 
+				}
+
+
+				function fechar_ajuda(){
+					document.querySelector('#msg_ajuda').style.display = 'none'
+				}
+
+				function ativa_ajuda(){
+					document.querySelector('#msg_ajuda').style.display = 'block'	
 				}
 
 

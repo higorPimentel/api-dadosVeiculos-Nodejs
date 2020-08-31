@@ -23,7 +23,7 @@ app.use(function(req, res, next){
 
 
 app.get('/read', function(req, res){
-	 fs.readFile('./teste.json', 'utf8', function(err, data){
+	 fs.readFile('./dados_veiculos.json', 'utf8', function(err, data){
 	 		res.send(data)
 	 	});
 });
@@ -32,7 +32,7 @@ app.get('/read', function(req, res){
 
 app.post('/create', function(req,res){
 	
-	 fs.readFile('./teste.json', 'utf8', function(err, data){	
+	 fs.readFile('./dados_veiculos.json', 'utf8', function(err, data){	
 	 	
 	 let jsonData = JSON.parse(data)
 	 let id_reg = jsonData.nextId;	
@@ -55,7 +55,7 @@ app.post('/create', function(req,res){
 		
 	let info_adicionada = JSON.stringify(jsonData)
 
-		fs.writeFile('./teste.json', info_adicionada, function(){
+		fs.writeFile('./dados_veiculos.json', info_adicionada, function(){
 		})
 
 
@@ -71,7 +71,7 @@ app.post('/create', function(req,res){
 
 app.post('/update', function(req,res){
 
-	 fs.readFile('./teste.json', 'utf8', function(err, data){	
+	 fs.readFile('./dados_veiculos.json', 'utf8', function(err, data){	
 	 	
 	 let jsonData = JSON.parse(data)
 	 let id_reg = parseInt(req.body.cx_id);	
@@ -91,7 +91,7 @@ app.post('/update', function(req,res){
 
 	let info_adicionada = JSON.stringify(jsonData)
 
-		fs.writeFile('./teste.json', info_adicionada, function(){
+		fs.writeFile('./dados_veiculos.json', info_adicionada, function(){
 		})
 
 })
@@ -105,7 +105,7 @@ res.send('Cadastro Atualizado com Sucesso')
 
 app.post('/delete', function(req,res){
 
-	 fs.readFile('./teste.json', 'utf8', function(err, data){	
+	 fs.readFile('./dados_veiculos.json', 'utf8', function(err, data){	
 	 	
 	 let jsonData = JSON.parse(data)
 	 let id_reg = parseInt(req.body.cx_id);	
@@ -116,7 +116,7 @@ app.post('/delete', function(req,res){
 	 			
 	 	let info_adicionada = JSON.stringify(jsonData)
 
-		fs.writeFile('./teste.json', info_adicionada, function(){
+		fs.writeFile('./dados_veiculos.json', info_adicionada, function(){
 		})
 
 	 			console.log(jsonData)	
@@ -124,7 +124,7 @@ app.post('/delete', function(req,res){
 
 		})
 
-	 res.send('exclusão com Sucesso')
+	 res.send('Excluído com Sucesso')
 
 })
 
@@ -135,7 +135,7 @@ app.post('/delete', function(req,res){
 
 
 app.listen(3000, function(){
-	console.log('server incializado')
+	console.log('server inicializado')
 });
 
 

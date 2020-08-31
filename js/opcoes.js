@@ -12,11 +12,14 @@ let cx_combustivel = document.querySelector('#cx_combustivel')
 let cx_cor = document.querySelector('#cx_cor')	
 let cx_preco = document.querySelector('#cx_preco')	
 let info_avisos = document.querySelector('#avisos')	
+let cabecalho = document.querySelector('#header-api')
+let btn_cancelar = document.querySelector('#btn_cancela')
+
 
 window.addEventListener('load',start)
 cx_id.addEventListener('keyup', retorna_dados)
-
-
+cabecalho.addEventListener('mouseover', acessa_item_header)
+btn_cancelar.addEventListener('click', limpar_campos)
 
 async function start (){
 	  tipo_cadastro = 1
@@ -33,6 +36,37 @@ async function retornar_id_user (){
 			cx_modelo.focus()	
 			
 	}						
+
+
+
+async function limpar_campos() {
+cx_preco.value = ''
+cx_ano.value = ''
+cx_cor.value = ''
+cx_modelo.value = ''
+await retornar_id_user ()
+}
+
+
+async function acessa_item_header(event){
+ document.querySelector('#opc_cadastro').style.border = 'none'
+ document.querySelector('#opc_relatorio').style.border = 'none'
+ document.querySelector('#opc_ajuda').style.border = 'none'
+ document.querySelector('#lb_h1').style.textShadow = 'none'
+
+	if (event.srcElement.id.substring(0,3) == 'opc') {
+		document.querySelector('#' + event.srcElement.id).style.border = 'solid 1px #40E0D0'
+		document.querySelector('#' + event.srcElement.id).style.borderRadius = '10px'
+		
+	}
+
+	if (event.srcElement.id.substring(0,2) == 'lb') {
+	document.querySelector('#' + event.srcElement.id).style.textShadow = '1px 1px 8px #40E0D0'
+			
+	}
+
+
+}
 
 
 
@@ -158,14 +192,15 @@ async function retorna_dados(event){
 
 			
 				 if (index == -1) {
-				 	console.log('item não localizado')
+				 	alert('item digitado não localizado')
 				 } else {
 				 		cx_marca.value = json.veiculos[index].marca
 				 		cx_modelo.value = json.veiculos[index].modelo
 				 		cx_ano.value = json.veiculos[index].ano
 				 		cx_cor.value = json.veiculos[index].cor
 				 		cx_combustivel.value = json.veiculos[index].combustivel
-				 		cx_preco.value = json.veiculos[index].cx_preco
+				 		cx_preco.value = json.veiculos[index].preco
+				 		
 				 }
 
 		}
